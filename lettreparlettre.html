@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<TITLE>Script N° 510</TITLE>
+</HEAD>
+ 
+ 
+ 
+ 
+<BODY>
+<div style="position:relative;left:0px;top:0px">
+<span id="highlighter" style="position:absolute; left:0; top:0; clip:rect(0px 0px 10px 0px)"></span>
+</div> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" language="">
+var tickercontents='Sentiment associé au mot ancre dans le titre d\'un roman de Pierre Mac Orlan. J\'ai donné mon nom à une fête religieuse, instituée en 2000, le premier dimanche après Paques. Définie, en théologie, comme la disposition à venir en aide à celui qui est dans le besoin, je désigne plus généralement la clémence ou la pitié qui pousse quelqu\'un à pardonner à un coupable ou à faire grâce à un vaincu. Du latin "misericordia", je'     // message
+var tickdelay=0                     // delait d'affichage
+var highlightspeed=3                    // vitesse de défilement
+var currentmessage=0                    // ??
+var clipwidth=0                     //
+ 
+function start_ticking(){
+crosstick=document.getElementById? document.getElementById("highlighter") : document.all.highlighter        // ??
+crosstickParent=crosstick.parentNode? crosstick.parentNode : crosstick.parentElement        // ??
+if (parseInt(crosstick.offsetHeight)>0)                              // ??
+    {crosstickParent.style.height=crosstick.offsetHeight+'px'}              // ??
+else
+    setTimeout("crosstickParent.style.height=crosstick.offsetHeight+'px'",100)      // ??
+    changetickercontent()                                   // lance fonction changetickercontent()
+}
+ 
+ 
+function changetickercontent(){                                 // fonction : ?
+crosstick.style.clip="rect(0px 0px auto 0px)"                           // ??
+crosstick.innerHTML=tickercontents                              // ??
+highlightmsg()                                          // lance fonction highlightmsg()
+}
+ 
+ 
+function highlightmsg(){                                    // fonction : ?
+var msgwidth=crosstick.offsetWidth                              // ??
+if (clipwidth<msgwidth){                                 // ??
+    clipwidth+=highlightspeed                               // ?? += ?
+    crosstick.style.clip="rect(0px "+clipwidth+"px 18px 0px)"               // ?? 18px ou auto
+    beginclip=setTimeout("highlightmsg()",20)                       // ??
+    }
+else{
+    clipwidth=0                                     // ??
+    clearTimeout(beginclip)                                 // ??
+    if (currentmessage==tickercontents.length-1) currentmessage=0               // ??
+    else setTimeout("changetickercontent()",tickdelay)                  // durée avant la relance de la fonction ??
+    }
+}
+ 
+ 
+ 
+if (document.all || document.getElementById) {window.onload=start_ticking}          // lancement fonction start_ticking()
+ 
+ 
+</script>
+ 
+ 
+</BODY>
+ 
+ 
+</HTML>
